@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<script> 
+ 
+        var height = 600; 
+        var width = 600; 
+         
+        var svg = d3.select("body") 
+            .append("svg") 
+            .attr("width", width) 
+            .attr("height", height); 
+        var rect1 = svg.append("rect") 
+                        .attr("x", 25) 
+                        .attr("y", height-100) 
+                        .attr('width', 150) 
+                        .attr('height', 100) 
+                        .style("stroke", "black") 
+                        .style("fill", "red"); 
+        var rect2 = svg.append("rect") 
+                        .attr("x", 150+75) 
+                        .attr("y", height-100) 
+                        .attr('width', 150) 
+                        .attr('height', 100) 
+                        .style("stroke", "black") 
+                        .style("fill", "red"); 
+        var rect3 = svg.append("rect") 
+                        .attr("x", 150+275) 
+                        .attr("y", height-100) 
+                        .attr('width', 150) 
+                        .attr('height', 100) 
+                        .style("stroke", "black") 
+                        .style("fill", "red"); 
+        var circ1 = svg.append("circle") 
+                        .attr("cx", 100) 
+                        .attr("cy", 100) 
+                        .attr("r", 40) 
+                        .style("stroke", "black") 
+                        .style("fill", "blue"); 
+        var circ2 = svg.append("circle") 
+                        .attr("cx", 300) 
+                        .attr("cy", 100) 
+                        .attr("r", 40) 
+                        .style("stroke", "black") 
+                        .style("fill", "blue"); 
+        var circ3 = svg.append("circle") 
+                        .attr("cx", 500) 
+                        .attr("cy", 100) 
+                        .attr("r", 40) 
+                        .style("stroke", "black") 
+                        .style("fill", "blue"); 
+        circ1.transition() 
+                .duration(1000) 
+                .ease("quad-in-out") 
+                .attr('transform', function(d){ return "translate(0,"+(height-100-140)+")"; }); 
+        circ2.transition() 
+                .duration(1000) 
+                .ease("bounce") 
+                .attr('transform', function(d){ return "translate(0,"+(height-100-140)+")"; }); 
+        circ3.transition() 
+                .duration(1000) 
+                .ease("quad-in-out") 
+                .attr('transform', function(d){ return "translate(0,"+(height-100-40)+")"; }); 
+   </script>
+</body>
+</html>

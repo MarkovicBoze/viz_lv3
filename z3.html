@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<script> 
+// z3 
+var svgW = 500; 
+var svgH = 500; 
+ 
+var rectW = 50; 
+var rectH = 100 
+ 
+var svg = d3.select("body") 
+.append("svg") 
+.attr("width", svgW) 
+.attr("height", svgH) 
+.style("background", "lightblue") 
+ 
+var rect = svg.append("rect") 
+.attr("x", 0) 
+.attr("y", 0) 
+.attr("width", rectW) 
+.attr("height", rectH) 
+.style("fill", "yellow") 
+ 
+rect.transition() 
+.duration(1000) 
+.attr("transform", "translate(" + (svgW-rectW) + "," + 0 +")") 
+.transition() 
+.duration(1000) 
+.attr("transform", "translate(" + (svgW-rectW) + "," + (svgH-rectH) +")");
+</script>
+</body>
+</html>

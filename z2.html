@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<script>
+var w = 600;
+var h = 600;
+
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
+
+var maxA = 0;
+var maxB = 0;
+
+function update() {
+    var data = d3.range(10).map(function() { return {x:
+        Math.random()*500, y: Math.random()*500}; 
+    });
+
+    var circles = svg.selectAll("circle")
+        .data(data)
+
+    for(var i = 0; i<10; i++){
+        var a = Math.random()*10000
+        var b = Math.random()*10000
+
+        if(a > maxA){
+            maxA = a;
+        }
+        if(b > maxB){
+            maxB = b;
+        }
+
+        svg .append("circle")
+            .attr("cx", function() { return data[i].x; })
+            .attr("cy", function() { return data[i].y; })
+            .attr("r", 15)
+            .style("fill", "white")
+            .style("stroke", "black")
+                
+            .transition()
+            .duration(a)
+            .style("fill", "blue")
+        
+            .transition()
+            .duration(b)
+            .attr("r", w/3)
+            .style("opacity", 0)
+    }
+
+    data = []
+    circles = svg.selectAll("circle").data(data)
+
+    circles.exit()
+        .transition()
+        .delay(maxA + maxB)
+        .duration(200)
+        .attr("r", 0)
+        .each("end", function() { d3.select(this).remove(); })
+}
+update();
+setInterval(update, maxA + maxB);
+
+</script>
+</body>
+</html>
